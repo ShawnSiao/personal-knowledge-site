@@ -2,6 +2,8 @@
 
 这是公开知识站的源码仓库。网站基于 Quartz v5 构建，内容从独立的私有知识库通过白名单导出，不直接读取本地项目或私有来源目录。
 
+在线站点：<https://shawnsiao.github.io/personal-knowledge-site/>
+
 ## 本地构建
 
 ```powershell
