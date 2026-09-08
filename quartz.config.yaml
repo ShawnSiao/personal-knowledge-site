@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: 实践知识库
+  pageTitle: ShawnSiao
   pageTitleSuffix: " · ShawnSiao"
   enableSPA: true
   enablePopovers: true
@@ -20,15 +20,15 @@ configuration:
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#faf8f8"
+        light: "#faf9f6"
         lightgray: "#e5e5e5"
         gray: "#b8b8b8"
         darkgray: "#4e4e4e"
         dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
+        secondary: "#496b98"
+        tertiary: "#58769b"
         highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        textHighlight: "#dbe6f588"
       darkMode:
         light: "#161618"
         lightgray: "#393639"
@@ -36,9 +36,9 @@ configuration:
         darkgray: "#d4d4d4"
         dark: "#ebebec"
         secondary: "#7b97aa"
-        tertiary: "#84a59d"
+        tertiary: "#58769b"
         highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        textHighlight: "#496b9888"
 plugins:
   - source: "@quartz-community/created-modified-date"
     enabled: true
@@ -130,21 +130,20 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 50
   - source: "@quartz-community/graph"
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 10
   - source: "@quartz-community/search"
     enabled: true
     layout:
-      position: left
+      position: header
       priority: 20
-      group: toolbar
       groupOptions:
         grow: true
   - source: "@quartz-community/backlinks"
@@ -153,12 +152,12 @@ plugins:
       position: right
       priority: 50
   - source: "@quartz-community/article-title"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 10
   - source: "@quartz-community/content-meta"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 20
@@ -168,24 +167,22 @@ plugins:
       position: beforeBody
       priority: 30
   - source: "@quartz-community/page-title"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 10
   - source: "@quartz-community/darkmode"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 30
-      group: toolbar
   - source: "@quartz-community/reader-mode"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 35
-      group: toolbar
   - source: "@quartz-community/breadcrumbs"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 5
@@ -209,7 +206,7 @@ plugins:
   - source: "@quartz-community/recent-notes"
     enabled: false
   - source: "@quartz-community/spacer"
-    enabled: true
+    enabled: false
     options: {}
     order: 25
     layout:
@@ -229,7 +226,7 @@ plugins:
         - tags
         - aliases
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: ---
       language: yaml
     order: 5
@@ -263,17 +260,21 @@ layout:
       gap: 0.5rem
   byPageType:
     "404":
+      template: personal
       positions:
         beforeBody: []
         left: []
         right: []
-    content: {}
+    content:
+      template: personal
     folder:
+      template: personal
       exclude:
         - reader-mode
       positions:
         right: []
     tag:
+      template: personal
       exclude:
         - reader-mode
       positions:

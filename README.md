@@ -1,6 +1,6 @@
-# 实践知识库网站
+# ShawnSiao 个人站
 
-这是公开知识站的源码仓库。网站基于 Quartz v5 构建，内容从独立的私有知识库通过白名单导出，不直接读取本地项目或私有来源目录。
+这里整理个人学习资料、心得、实践经验与日常想法，包含学习、文章、项目、资源、随记和关于六个栏目。网站基于 Quartz v5 构建，内容从独立的私有知识库通过白名单导出，不直接读取本地项目或私有来源目录。
 
 在线站点：<https://shawnsiao.github.io/personal-knowledge-site/>
 
@@ -13,6 +13,10 @@ npx quartz build
 ```
 
 生成结果位于 `public/`，该目录不提交到 Git。
+
+使用 Node.js 24，与部署环境保持一致。运行 `npx quartz build --serve` 可在本地预览，提交前运行 `npm run check`。
+
+个人站布局位于 `quartz/components/frames/PersonalFrame.tsx`，配色与响应式样式位于 `quartz/styles/custom.scss`。已发布文章自动加入首页和文章列表，原有文章地址保持可访问。
 
 ## 内容更新
 

@@ -1,3 +1,348 @@
 @use "./variables.scss" as *;
+:root {
+  --bodyFont: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  --headerFont: Georgia, "Noto Serif SC", "Songti SC", SimSun, serif;
+}
+.page[data-frame="personal"] {
+  max-width: none;
+  margin: 0;
+  #quartz-body {
+    display: block;
+    padding: 0;
+  }
+}
+.personal-site {
+  color: #27292d;
+  font: 15px / 1.8 var(--bodyFont);
+  max-width: 1240px;
+  padding: 0 36px;
+  margin: auto;
+  * {
+    box-sizing: border-box;
+  }
+  a {
+    font-weight: 400;
+  }
+  a.internal {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    line-height: inherit;
+  }
+  a:hover {
+    color: #496b98;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #496b98;
+    outline-offset: 5px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--headerFont);
+    color: #27292d;
+    font-weight: 500;
+  }
+  h1 {
+    font-size: 42px;
+    line-height: 1.5;
+    margin: 0 0 25px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  h3 {
+    font-size: 23px;
+  }
+  p {
+    line-height: 1.95;
+  }
+  .skip-link {
+    position: absolute;
+    top: -100px;
+  }
+  .skip-link:focus {
+    top: 0;
+    background: white;
+    z-index: 10;
+  }
+  .site-header {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    border-bottom: 1px solid #e0e0df;
+  }
+  .brand {
+    font:
+      700 25px / 1.4 Georgia,
+      serif;
+    letter-spacing: -1px;
+    color: #27292d;
+    white-space: nowrap;
+  }
+  .brand span {
+    font-weight: 400;
+  }
+  nav {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 26px;
+  }
+  nav a {
+    color: #27292d;
+    font-size: 14px;
+    padding: 9px 0 !important;
+    border-bottom: 2px solid transparent;
+  }
+  nav a[aria-current="page"] {
+    border-color: #27292d;
+  }
+  .site-tools {
+    width: 100px;
+    flex-shrink: 0;
+  }
+  .site-tools .search-button {
+    background: transparent;
+    border: 1px solid #e0e0df;
+    border-radius: 0;
+  }
+  .site-main {
+    min-height: 60vh;
+    padding: 58px 0 70px;
+  }
+  .site-main > .popover-hint > article > h1:first-child {
+    margin-top: 0;
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 65px;
+    align-items: center;
+    padding: 15px 0 62px;
+  }
+  .hero h1 {
+    font-size: clamp(35px, 3.5vw, 52px);
+    margin: 18px 0;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: #58769b;
+  }
+  .eyebrow {
+    color: #70737a;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+  .intro {
+    max-width: 520px;
+    color: #70737a;
+  }
+  .actions {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    margin-top: 28px;
+    font-size: 13px;
+  }
+  .actions .primary {
+    background: #27292d;
+    color: #faf9f6;
+    padding: 10px 23px;
+  }
+  .actions .primary:hover {
+    background: #496b98;
+  }
+  .letter {
+    background: #eef1f5;
+    border: 1px solid #dde2e9;
+    padding: 32px;
+    transform: rotate(1deg);
+  }
+  .letter h2 {
+    margin: 16px 0;
+    font-size: 26px;
+  }
+  .letter p {
+    color: #626a76;
+    font-size: 14px;
+  }
+  .letter .eyebrow {
+    font-size: 11px;
+  }
+  .letter .signature {
+    font:
+      italic 23px Georgia,
+      serif;
+    text-align: right;
+  }
+  .section-head {
+    border-top: 1px solid #e0e0df;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  .section-head > span {
+    color: #70737a;
+    font-size: 12px;
+  }
+  .topics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+  .topic {
+    display: block;
+    border-bottom: 1px solid #e0e0df;
+    padding: 20px 0 !important;
+    color: #27292d;
+  }
+  .topic h3 {
+    margin: 16px 0 10px;
+  }
+  .topic p {
+    font-size: 13px;
+    color: #70737a;
+    max-width: 280px;
+  }
+  .topic > span {
+    font-size: 12px;
+  }
+  .topic .number {
+    font:
+      italic 16px Georgia,
+      serif;
+    color: #7c8490;
+  }
+  .entry {
+    display: block;
+    border-bottom: 1px solid #e0e0df;
+    padding: 24px 0 !important;
+  }
+  .entry h3 {
+    margin: 8px 0 12px;
+  }
+  .meta {
+    color: #70737a;
+    font-size: 11px;
+  }
+  .read-more,
+  .back {
+    font-size: 13px;
+  }
+  .article-list {
+    margin-top: 38px;
+  }
+  .reading-page {
+    max-width: 760px;
+    margin: auto;
+  }
+  .reading-page article {
+    font-size: 16px;
+    line-height: 2;
+  }
+  .reading-page article h1 {
+    font-size: 36px;
+    margin-top: 25px !important;
+  }
+  .reading-page article h2 {
+    margin-top: 36px;
+  }
+  .reading-page article a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .reading-extras {
+    border-top: 1px solid #e0e0df;
+    margin-top: 45px;
+    padding-top: 20px;
+  }
+  .site-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    padding: 30px 0;
+    border-top: 1px solid #e0e0df;
+  }
+  .site-footer > span {
+    flex: 1;
+    color: #70737a;
+    font-size: 12px;
+  }
+  .site-footer > a:not(.brand) {
+    font-size: 12px;
+  }
+  .site-footer small {
+    width: 100%;
+    color: #70737a;
+    font-size: 11px;
+  }
+  @media (max-width: 800px) {
+    padding: 0 24px;
+    .site-header {
+      flex-wrap: wrap;
+      padding: 22px 0;
+      gap: 18px;
+    }
+    nav {
+      order: 3;
+      flex-basis: 100%;
+      gap: 12px 22px;
+    }
+    .site-tools {
+      margin-left: auto;
+    }
+    .site-main {
+      padding-top: 35px;
+    }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding-top: 0;
+    }
+    .letter {
+      transform: none;
+      padding: 25px;
+    }
+    .hero h1 {
+      font-size: clamp(25px, 7vw, 42px);
+    }
+    .topics {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .topic p {
+      max-width: none;
+    }
+    h1,
+    .reading-page article h1 {
+      font-size: 30px;
+    }
+    .site-footer {
+      gap: 18px;
+    }
+    .site-footer > span {
+      flex-basis: 55%;
+    }
+  }
+}
 
-// put your custom CSS here!
+.page[data-frame="personal"] #quartz-body .site-main {
+  min-width: 0;
+  max-width: 100%;
+  &.reading-page {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+}
