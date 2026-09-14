@@ -3,7 +3,7 @@ import { FullSlug, resolveRelative, simplifySlug } from "../../util/path"
 
 const navigation = [
   ["index", "首页"],
-  ["learning", "学习"],
+  ["learning/index", "学习"],
   ["articles/index", "文章"],
   ["projects", "项目"],
   ["resources", "资源"],
@@ -17,8 +17,10 @@ export const PersonalFrame: PageFrame = {
     const slug = componentData.fileData.slug!
     const simple = simplifySlug(slug)
     const home = simple === "/"
-    const listing = home || simple === "articles/" || simple === "learning"
+    const listing = home || simple === "articles/" || simple === "learning/"
     const article = simple.startsWith("articles/") && simple !== "articles/"
+    const learningPage = simple.startsWith("learning/") && simple !== "learning/"
+    const reading = article || learningPage
     const href = (target: string) => resolveRelative(slug, target as FullSlug)
     const articles = componentData.allFiles
       .filter((file) => file.slug?.startsWith("articles/") && !file.slug.endsWith("/index"))
@@ -37,7 +39,9 @@ export const PersonalFrame: PageFrame = {
               const active =
                 target === "articles/index"
                   ? simple.startsWith("articles/")
-                  : simple === simplifySlug(target as FullSlug)
+                  : target === "learning/index"
+                    ? simple.startsWith("learning/")
+                    : simple === simplifySlug(target as FullSlug)
               return (
                 <a class="internal" href={href(target)} aria-current={active ? "page" : undefined}>
                   {label}
@@ -54,11 +58,14 @@ export const PersonalFrame: PageFrame = {
         <main
           id="main-content"
           tabIndex={-1}
-          class={article ? "center site-main reading-page" : "center site-main"}
+          class={reading ? "center site-main reading-page" : "center site-main"}
         >
-          {article && (
-            <a class="back internal" href={href("articles/index")}>
-              ← 返回文章
+          {reading && (
+            <a
+              class="back internal"
+              href={href(learningPage ? "learning/index" : "articles/index")}
+            >
+              {learningPage ? "← 返回学习" : "← 返回文章"}
             </a>
           )}
           <div class="popover-hint">
