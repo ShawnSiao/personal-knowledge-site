@@ -1,5 +1,5 @@
 ---
-title: RAG 与知识检索
+title: RAG 原创教程：从文档到可验证的回答
 date: 2026-09-14
 lastmod: 2026-09-14
 draft: false
@@ -7,36 +7,50 @@ knowledge_id: ai-track-rag
 knowledge_type: article
 ---
 
-# RAG 与知识检索
+# RAG 原创教程：从文档到可验证的回答
 
-把资料转成可追溯的回答，需要分别检查文档处理、检索和生成。没有检索到证据时，应当保留不确定性。以下是本站设计的练习路线。
+这套教程围绕一个虚构团队的操作手册问答系统，从问题定义、资料入库，一直讲到检索、生成、评估和部署。每章包含原理解释、设计取舍、例子与练习；第十章提供可复制运行的完整实验。
 
-## 学习顺序
+正文依据公开论文、官方文档和企业工程文章独立撰写。它与本地课程按主题关联，**不是第三方课程的全文改写，也不代表原课程作者的观点**。资料核对日期为 2026 年 9 月 14 日。
 
-1. 选取 20 份自有或允许公开的文档，保存文档 ID、版本、标题和段落位置。先处理乱码、重复段落和表格丢失。
-2. 按标题与语义边界分块，保留出处。用同一组问题比较分块方案，观察答案证据是否被截断。
-3. 先做关键词检索基线，再比较向量检索、混合检索与重排序。每次只改一个变量，并保留前后结果。
-4. 把检索片段连同出处交给生成环节，要求回答引用片段。分别统计证据是否命中、回答是否忠于证据、是否正确拒答。
+## 开始阅读
 
-## 对应课程
+[[learning/ai/rag-guide/01-problem|从第一章开始 →]] · [[learning/ai/rag-guide/10-lab|直接运行完整实验 →]]
 
-- [[learning/ai/courses/rag-quickstart|RAG快速开发实战]] — 主线。文档解析、分块、向量库、混合检索、重排序与评估。
-- [[learning/ai/courses/rag-systems|RAG系统实战课]] — 主线。业务系统问答、元数据检索、知识入库与质量改进。
-- [[learning/ai/courses/llm-rag-handbook|LLM & RAG快速应用小册]] — 补充。企业资料整理、知识问答、内容推荐与生成应用。
-- [[learning/ai/courses/retrieval-fundamentals|检索技术核心20讲]] — 补充。检索的数据结构、哈希、状态与索引基础。
+- [[learning/ai/rag-guide/01-problem|01｜先定义问题：RAG 究竟解决什么]]
+- [[learning/ai/rag-guide/02-ingestion|02｜文档入库：先保住来源、结构和版本]]
+- [[learning/ai/rag-guide/03-chunking|03｜分块与索引：让片段既能命中又能读懂]]
+- [[learning/ai/rag-guide/04-retrieval|04｜关键词、向量与混合检索：把候选找全]]
+- [[learning/ai/rag-guide/05-reranking|05｜重排序与上下文组装：把有限位置留给证据]]
+- [[learning/ai/rag-guide/06-generation|06｜生成与引用：让每个结论都有可检查的依据]]
+- [[learning/ai/rag-guide/07-evaluation|07｜评估：分清没找到、没读懂和说错了]]
+- [[learning/ai/rag-guide/08-production|08｜部署与运维：让更新、权限和失败都有确定行为]]
+- [[learning/ai/rag-guide/09-cases|09｜案例与进阶：什么时候才值得增加复杂度]]
+- [[learning/ai/rag-guide/10-lab|10｜完整实验：运行、测试与扩展一个检索问答流程]]
 
-## 综合练习
+## 学完能够做什么
 
-做一个公开资料问答器，准备 30 个问题：20 个可回答、5 个资料没有答案、5 个存在版本冲突。保留每次检索命中的文档和最终引用。
+能够解释一次错误回答发生在文档、检索、上下文还是生成阶段；实现一个可追溯的检索基线；检查版本、权限与引用；设计独立问题集，并区分本地实验和生产证据。
 
-## 验收标准
+阅读需要基础 Python 和 JSON 知识。离线实验只用标准库；神经嵌入、重排序与本地模型生成作为可选接入部分，不要求先购买服务。
 
-能够解释每个失败发生在解析、分块、召回、排序还是生成阶段；无答案问题不会强行给出事实；文档更新后引用仍能定位。
+## 实际案例与证据怎么使用
 
-## 常见误区
+正文结合 Slack 的权限设计、Dropbox 的标注流程、Anthropic 的检索实验，以及 RAG、长上下文、GraphRAG 和评估研究。每项外部事实在对应段落链接原始来源，并与本站的分析建议分开。
 
-回答流畅不能证明检索有效。不要一开始同时加入图检索、多轮改写和多 Agent；先建立可比较的基线。
+厂商实验数字不作为本站项目成果。特别是检索失败率、回答正确率、忠实性和用户任务完成率，不能互相替代。
 
-上述安排是本站的学习设计，实际练习结果尚待记录。公开延伸阅读：[Hugging Face Agents Course](https://huggingface.co/learn/agents-course/en/unit0/introduction)。
+## 实验验证范围
 
-[[learning/ai/catalog|完整课程目录]] · [[learning/ai/roadmap|学习路线]] · [[learning/index|返回学习首页]]
+配套离线代码已在 Python 3.11.1 下运行，10 项测试通过。5 个教学问题仅用于程序示范，不是独立质量评估。神经嵌入、重排序和生成示例已做语法检查，但没有在本次执行中下载模型或完成真实推理。
+
+上线到本网站的是教程正文，不是对外提供服务的 RAG 应用。真实模型质量、性能、权限撤销和部署恢复，需要在具体应用环境另行验证。
+
+## 本地课程关联
+
+- [[learning/ai/courses/rag-quickstart|RAG快速开发实战]]：可配合本教程的文档、分块与检索章节阅读。
+- [[learning/ai/courses/rag-systems|RAG系统实战课]]：可配合生成、评估与部署章节阅读。
+- [[learning/ai/courses/llm-rag-handbook|LLM & RAG快速应用小册]]：可配合连续案例理解应用流程。
+- [[learning/ai/courses/retrieval-fundamentals|检索技术核心20讲]]：用于补充检索基础。
+
+[[learning/ai/catalog|完整课程目录]] · [[learning/index|返回学习首页]]
